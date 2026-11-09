@@ -1,0 +1,30 @@
+[project]
+name = "laboratory-python-coap-interoperability"
+version = "0.1.0"
+description = "Python CoAP Interoperability Laboratory - Coffee Machine with CoRE Link Format, SenML, Resource Discovery and an autonomous client (aiocoap)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "aiocoap>=0.4.17,<0.5",
+    "LinkHeader>=0.4.3",
+    "kpn-senml>=1.0.1",
+    # cbor2 6.x is built in Rust and may require a Rust compiler on some platforms: 5.x has the same API
+    "cbor2>=5.6,<6",
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+coffee-machine-server = "coap_interoperability_laboratory.process.coffee_machine_server:main"
+coffee-discovery-client = "coap_interoperability_laboratory.client.coffee_discovery_client:main"
+coffee-get-client = "coap_interoperability_laboratory.client.coffee_get_client:main"
+coffee-observe-client = "coap_interoperability_laboratory.client.coffee_observe_client:main"
+coffee-post-client = "coap_interoperability_laboratory.client.coffee_post_client:main"
+coffee-put-client = "coap_interoperability_laboratory.client.coffee_put_client:main"
+coffee-automatic-client = "coap_interoperability_laboratory.client.coffee_automatic_client:main"
+
+[build-system]
+requires = ["uv_build>=0.13.0,<0.14"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "coap_interoperability_laboratory"

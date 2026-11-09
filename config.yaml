@@ -1,0 +1,24 @@
+# Python CoAP Interoperability Laboratory - Shared configuration
+# This file is read by the ConfigManager class (src/coap_interoperability_laboratory/config/config_manager.py)
+# and contains the parameters shared by the Coffee Machine CoAP Server (process/ folder) and the clients (client/ folder).
+
+# Coffee Machine CoAP Server (process/ folder)
+server:
+  # Local IP address on which the CoAP server listens
+  # (127.0.0.1 accepts only local requests, 0.0.0.0 accepts requests from the other hosts of the network)
+  bind_host: 127.0.0.1
+  # UDP port of the CoAP server (5683 is the default port for plain CoAP)
+  port: 5683
+
+# Identity of the Coffee Machine, used as SenML Base Name (bn) of all the SenML payloads.
+# The full name of each SenML Record is the concatenation bn + n (e.g., urn:dev:coffee-machine-0001:temperature),
+# for this reason the name ends with a separator (":")
+device:
+  name: "urn:dev:coffee-machine-0001:"
+
+# CoAP Clients (client/ folder)
+client:
+  # IP address or hostname of the Coffee Machine CoAP Server
+  server_host: 127.0.0.1
+  # UDP port of the Coffee Machine CoAP Server
+  server_port: 5683
